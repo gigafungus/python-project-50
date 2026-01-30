@@ -7,7 +7,9 @@ authors = [
 	{ name = 'fungus', email = 'amortis@inbox.ru'}
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "ruff>=0.14.14",
+]
 
 [build-system]
 requires = ["hatchling"]
