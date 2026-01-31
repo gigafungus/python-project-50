@@ -1,11 +1,5 @@
 # Hexlet tests and linter status:
-[![Actions Status](https://github.com/gigafungus/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/gigafungus/python-project-50/actions)
-
-[![Gendiff CI](https://github.com/gigafungus/python-project-50/actions/workflows/my_gendiff.yml/badge.svg)](https://github.com/gigafungus/python-project-50/actions/workflows/my_gendiff.yml)
-
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=gigafungus_python-project-50&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=gigafungus_python-project-50)
-
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=gigafungus_python-project-50&metric=coverage)](https://sonarcloud.io/summary/new_code?id=gigafungus_python-project-50)
+[![Actions Status](https://github.com/gigafungus/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/gigafungus/python-project-50/actions)  [![Gendiff CI](https://github.com/gigafungus/python-project-50/actions/workflows/my_gendiff.yml/badge.svg)](https://github.com/gigafungus/python-project-50/actions/workflows/my_gendiff.yml)   [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=gigafungus_python-project-50&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=gigafungus_python-project-50)  [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=gigafungus_python-project-50&metric=coverage)](https://sonarcloud.io/summary/new_code?id=gigafungus_python-project-50)
 
 ## Asciinema:
 - [step 4](https://asciinema.org/a/87NmVnGrIsp8G6sb)
