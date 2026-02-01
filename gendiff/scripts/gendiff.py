@@ -1,5 +1,6 @@
 import argparse
 import json
+from pathlib import Path
 
 
 def main():
@@ -10,16 +11,21 @@ def main():
     gendiff_parser.add_argument("second_file")
     gendiff_parser.add_argument("-f", "--format", help="set format of output")
     args = gendiff_parser.parse_args()
-    file_1 = json.load(open(args.first_file))
-    file_2 = json.load(open(args.second_file))
+    file_1 = open_file(args.first_file)
+    file_2 = open_file(args.second_file)
     print(generate_diff(file_1, file_2))
 
 
+def open_file(string):
+    path = Path(string)
+    with path.open() as file:
+        data = json.load(file)
+    return data
+
+
 def generate_diff(filepath1, filepath2):
-    with open(filepath1) as f1:
-        f1 = json.load(f1)
-    with open(filepath2) as f2:
-        f2 = json.load(f2)
+    f1 = open_file(filepath1)
+    f2 = open_file(filepath2)
     result = {}
     for k, v in sorted((f1 | f2).items()):
         if k not in f2.keys():
