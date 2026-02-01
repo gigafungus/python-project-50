@@ -15,10 +15,12 @@ def main():
     print(generate_diff(file_1, file_2))
 
 
-def generate_diff(f1, f2):
+def generate_diff(filepath1, filepath2):
+    with open(filepath1) as f1:
+        f1 = json.load(f1)
+    with open(filepath2) as f2:
+        f2 = json.load(f2)
     result = {}
-    f1 = json.load(open(f1))
-    f2 = json.load(open(f2))
     for k, v in sorted((f1 | f2).items()):
         if k not in f2.keys():
             result[f"  - {k}"] = f1[k]
