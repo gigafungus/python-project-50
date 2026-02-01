@@ -7,9 +7,7 @@ authors = [
 	{ name = 'fungus', email = 'amortis@inbox.ru'}
 ]
 requires-python = ">=3.12"
-dependencies = [
-    "ruff>=0.14.14",
-]
+dependencies = []
 
 [build-system]
 requires = ["hatchling"]
@@ -17,6 +15,12 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["gendiff"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "ruff>=0.14.14",
+]
 
 [project.scripts]
 gendiff = 'gendiff.scripts.gendiff:main'
