@@ -22,6 +22,9 @@ run:
 lint:
 	uv run ruff check
 
+fix:
+	uv run ruff check --fix
+
 check: test lint
 
 .PHONY: install test lint selfcheck check build
