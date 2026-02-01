@@ -7,7 +7,11 @@ authors = [
 	{ name = 'fungus', email = 'amortis@inbox.ru'}
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.14.14",
+]
 
 [build-system]
 requires = ["hatchling"]
@@ -17,10 +21,7 @@ build-backend = "hatchling.build"
 packages = ["gendiff"]
 
 [dependency-groups]
-dev = [
-    "pytest>=9.0.2",
-    "ruff>=0.14.14",
-]
+dev = []
 
 [project.scripts]
 gendiff = 'gendiff.scripts.gendiff:main'
