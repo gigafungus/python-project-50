@@ -17,9 +17,8 @@ def main():
 
 def generate_diff(f1, f2):
     result = {}
-    if isinstance(f1, str):
-        f1 = json.load(open(f1))
-        f2 = json.load(open(f2))
+    f1 = json.load(open(f1))
+    f2 = json.load(open(f2))
     for k, v in sorted((f1 | f2).items()):
         if k not in f2.keys():
             result[f"  - {k}"] = f1[k]
@@ -31,12 +30,8 @@ def generate_diff(f1, f2):
             else:
                 result[f"  - {k}"] = f1[k]
                 result[f"  + {k}"] = f2[k]
-
-    return (
-        "{\n"
-        + "\n".join(f"{k}: {json.dumps(v).strip('"')}" for k, v in result.items())
-        + "\n}"
-    )
+    line = (f'{k}: {json.dumps(v).strip('"')}' for k, v in result.items())
+    return "{\n" + "\n".join(line) + "\n}"
 
 
 if __name__ == "__main__":
