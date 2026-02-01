@@ -8,7 +8,7 @@ test:
 	uv run pytest
 
 test-coverage:
-	uv run pytest --cov=gendiff --cov-report=xml
+	uv run pytest --cov=gendiff --cov-report xml
 
 package-install:
 	uv tool install dist/*.whl
