@@ -25,6 +25,6 @@ lint:
 fix:
 	uv run ruff check --fix
 
-check: test lint
+check: install test lint test-coverage
 
 .PHONY: install test lint selfcheck check build
