@@ -1,0 +1,5 @@
+enabled: false
+theme: dark
+threshold: 0.9
+log_level: debug
+region: us-east

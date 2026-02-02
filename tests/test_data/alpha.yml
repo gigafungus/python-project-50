@@ -1,0 +1,6 @@
+enabled: true
+max_retries: 3
+theme: dark
+threshold: 0.75
+region: eu-west
+cache: null
