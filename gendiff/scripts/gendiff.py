@@ -34,7 +34,9 @@ def build_diff(dict1, dict2):
                 )
             else:
                 if dict1[key] == dict2[key]:
-                    diff.append({"key": key, "type": "unchanged", "value": dict2[key]})
+                    diff.append(
+                        {"key": key, "type": "unchanged", "value": dict2[key]}
+                    )
                 else:
                     diff.append(
                         {
@@ -59,7 +61,9 @@ def stringify(value, depth):
         for key in sorted(val.keys()):
             indent = " " * depth * 4
             if isinstance(val[key], dict):
-                result.append(f"{indent}{key}: {_stringify(val[key], depth + 1)}")
+                result.append(
+                    f"{indent}{key}: {_stringify(val[key], depth + 1)}"
+                )
             else:
                 result.append(f"{indent}{key}: {(val[key])}")
 
