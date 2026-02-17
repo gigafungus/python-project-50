@@ -4,3 +4,4 @@
 ## Asciinema:
 - [step 4](https://asciinema.org/a/87NmVnGrIsp8G6sb)
 - [step 6](https://asciinema.org/a/zjTubMKp49kVNAmY)
+- [step 7](https://asciinema.org/a/3HmjjZDDKMJwHPBs)
