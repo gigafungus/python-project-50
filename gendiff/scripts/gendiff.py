@@ -3,7 +3,8 @@ from pathlib import Path
 
 import yaml
 
-from .stylish import stylish
+from .formatter.plain import plain
+from .formatter.stylish import stylish
 
 
 def open_file(string):
@@ -56,6 +57,8 @@ def generate_diff(file1, file2, format_name="stylish"):
     f2 = open_file(file2)
 
     diff_tree = build_diff(f1, f2)
-    if format_name == "stylish":
-        stylish_tree = stylish(diff_tree, 1)
-        return "{\n" + stylish_tree + "\n}"
+    if format_name == "plain":
+        plain_tree = plain(diff_tree)
+        return plain_tree
+    stylish_tree = stylish(diff_tree, 1)
+    return "{\n" + stylish_tree + "\n}"
