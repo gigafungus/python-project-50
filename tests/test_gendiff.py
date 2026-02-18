@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import pytest
+
 from gendiff import generate_diff
 
 
@@ -7,53 +9,86 @@ def get_test_data(filename):
     return Path(__file__).parent / "test_data" / filename
 
 
-def read_expected(filename):
-    return get_test_data(filename).read_text()
+def get_expected_chunks(filename):
+    return [
+        chunk.strip()
+        for chunk in get_test_data(filename).read_text().split("\n\n")
+    ]
 
 
-def test_generate_diff_flat_json():
-    file1 = get_test_data("alpha.json")
-    file2 = get_test_data("beta.json")
-    expectation = read_expected("expected_flat.txt")
+expected_stylish = get_expected_chunks("expected_stylish.txt")
+expected_plain = get_expected_chunks("expected_plain.txt")
+expected_json = get_expected_chunks("expected_json_format.txt")
 
-    assert generate_diff(file1, file2) == expectation
+args_list_stylish = [
+    pytest.param(
+        "flat1.json", "flat2.json", expected_stylish[1], id="flat_json_stylish"
+    ),
+    pytest.param(
+        "flat1.yml", "flat2.yaml", expected_stylish[1], id="flat_yaml_stylish"
+    ),
+    pytest.param(
+        "nested1.json",
+        "nested2.json",
+        expected_stylish[0],
+        id="nested_json_stylish",
+    ),
+    pytest.param(
+        "nested1.yml",
+        "nested2.yaml",
+        expected_stylish[0],
+        id="nested_yaml_stylish",
+    ),
+]
+args_list_plain = [
+    pytest.param(
+        "flat1.json", "flat2.json", expected_plain[1], id="flat_json_plain"
+    ),
+    pytest.param(
+        "flat1.yml", "flat2.yaml", expected_plain[1], id="flat_yaml_plain"
+    ),
+    pytest.param(
+        "nested1.json",
+        "nested2.json",
+        expected_plain[0],
+        id="nested_json_plain",
+    ),
+    pytest.param(
+        "nested1.yml", "nested2.yaml", expected_plain[0], id="nested_yaml_plain"
+    ),
+]
+args_list_json = [
+    pytest.param(
+        "flat1.json", "flat2.json", expected_json[1], id="flat_json_json"
+    ),
+    pytest.param(
+        "flat1.yml", "flat2.yaml", expected_json[1], id="flat_yaml_json"
+    ),
+    pytest.param(
+        "nested1.json", "nested2.json", expected_json[0], id="nested_json_json"
+    ),
+    pytest.param(
+        "nested1.yml", "nested2.yaml", expected_json[0], id="nested_yaml_json"
+    ),
+]
 
 
-def test_generate_diff_flat_yaml():
-    file1 = get_test_data("alpha.yml")
-    file2 = get_test_data("beta.yaml")
-    expectation = read_expected("expected_flat.txt")
-
-    assert generate_diff(file1, file2) == expectation
-
-
-def test_generate_diff_nested_json():
-    file1 = get_test_data("nested1.json")
-    file2 = get_test_data("nested2.json")
-    expectation = read_expected("expected_nested.txt")
-
-    assert generate_diff(file1, file2) == expectation
+@pytest.mark.parametrize("file1,file2,expected", args_list_stylish)
+def test_generate_diff_stylish(file1, file2, expected):
+    file_1 = get_test_data(file1)
+    file_2 = get_test_data(file2)
+    assert generate_diff(file_1, file_2) == expected
 
 
-def test_generate_diff_nested_yaml():
-    file1 = get_test_data("nested1.yml")
-    file2 = get_test_data("nested2.yaml")
-    expectation = read_expected("expected_nested.txt")
-
-    assert generate_diff(file1, file2) == expectation
-
-
-def test_generate_diff_plain_json():
-    file1 = get_test_data("nested1.json")
-    file2 = get_test_data("nested2.json")
-    expectation = read_expected("expected_plain.txt")
-
-    assert generate_diff(file1, file2, "plain") == expectation
+@pytest.mark.parametrize("file1,file2,expected", args_list_plain)
+def test_generate_diff_plain(file1, file2, expected):
+    file_1 = get_test_data(file1)
+    file_2 = get_test_data(file2)
+    assert generate_diff(file_1, file_2, "plain") == expected
 
 
-def test_generate_diff_plain_yaml():
-    file1 = get_test_data("nested1.yml")
-    file2 = get_test_data("nested2.yaml")
-    expectation = read_expected("expected_plain.txt")
-
-    assert generate_diff(file1, file2, "plain") == expectation
+@pytest.mark.parametrize("file1,file2,expected", args_list_json)
+def test_generate_diff_json(file1, file2, expected):
+    file_1 = get_test_data(file1)
+    file_2 = get_test_data(file2)
+    assert generate_diff(file_1, file_2, "json") == expected
