@@ -60,5 +60,8 @@ def generate_diff(file1, file2, format_name="stylish"):
     if format_name == "plain":
         plain_tree = plain(diff_tree)
         return plain_tree
+    elif format_name == 'json':
+        return json.dumps(diff_tree, indent=4)
     stylish_tree = stylish(diff_tree, 1)
     return "{\n" + stylish_tree + "\n}"
+   
