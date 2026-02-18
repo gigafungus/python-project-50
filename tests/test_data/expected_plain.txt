@@ -9,3 +9,10 @@ Property 'group1.baz' was updated. From 'bas' to 'bars'
 Property 'group1.nest' was updated. From [complex value] to 'str'
 Property 'group2' was removed
 Property 'group3' was added with value: [complex value]
+
+Property 'cache' was removed
+Property 'enabled' was updated. From true to false
+Property 'log_level' was added with value: 'debug'
+Property 'max_retries' was removed
+Property 'region' was updated. From 'eu-west' to 'us-east'
+Property 'threshold' was updated. From 0.75 to 0.9
