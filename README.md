@@ -10,7 +10,9 @@ The difference can be showed in three ways (format types):
 1. Stylish _(the default one)_
 2. Plain
 3. JSON
+
 The output examples are represented in the Asciinema section below.
+
 
 ### Installation
 1. Choose a directory you want to store this library in
@@ -19,7 +21,8 @@ The output examples are represented in the Asciinema section below.
 4. Input `cd python-project-50`
 5. Input `pip install .`
 
-==After that you can use _**gendiff**_ as a command in your CLI or a library in your own .py files.==
+After that you can use _**gendiff**_ as a command in your CLI or as a library in your own .py files.
+
 
 #### Usage as a CLI-command:
 * `gendiff` requires two positional arguments that must be paths to files you want to compare. Paths to files must be specified relatively to your current working directory
@@ -27,12 +30,15 @@ The output examples are represented in the Asciinema section below.
 * `gendiff -h` shows a brief description
 * `gendiff path/to/first_file path/to/second_file` shows a difference between files in a default (stylish) format
 
+
 #### Usage as a library:
 * Simply make an import `from gendiff import generate_diff` to use the difference generating function by itself
 * Signature: `generate_diff("path/to/first_file", "path/to/second_file", format_name="stylish")`, returns a string
 
+
 ### Requirements:
-* python 3.12
+* python 3.12 or newer
+
 
 ## Asciinema:
 - [flat json files, stylish output](https://asciinema.org/a/87NmVnGrIsp8G6sb)
